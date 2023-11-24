@@ -3,6 +3,7 @@ const express = require('express')
 const UserController = require('../Controllers/UserController')
 const ProductController = require('../Controllers/ProductController.js')
 const OrderController = require('../Controllers/OrderController.js')
+const CategoryController = require('../Controllers/CategoryController.js')
 const router = express.Router()
 
 //userContoller api router
@@ -20,6 +21,7 @@ router.get('/getsingleuser/:id', UserController.getSingleUser)
 router.get('/deleteuser/:id',UserController.deleteUser) //delete api pending work also check 
 // i have to given id in single user and all user
 
+
 // productContoller api
 router.post('/product/createproduct',ProductController.createProduct)
 router.get('/product/getallproduct', ProductController.getAllProducts)
@@ -27,12 +29,18 @@ router.get('/product/productdetail/:id', ProductController.getProductDetail)
 router.post('/product/updateproduct/:id', ProductController.updateProduct)
 router.get('/product/deleteproduct/:id', ProductController.deleteProduct)
 
-
 // OderContoller api
 router.post('/order/createorder', OrderController.newOrder)
 router.get('/order/getallorder', OrderController.getAllOrder)
 router.get('/order/getsingleorder/:id', OrderController.getSingleOrder)
 router.get('/order/deleteorder/:id', OrderController.deleteOrder)
+
+//categoryController api
+router.post('/category/createcategory', CategoryController.categoryInsert)
+router.get('/category/displaycategory', CategoryController.categoryDisplay)
+router.get('/category/viewcategory/:id', CategoryController.categoryView)
+router.post('/category/updatecategory/:id', CategoryController.categoryUpdate)
+router.get('/category/deletecategory/:id', CategoryController.categoryDelete)
 
 
 module.exports = router
